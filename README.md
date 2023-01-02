@@ -2,7 +2,7 @@
 
 ![Cosmic Velocity](https://github.com/tsujio/game-cosmic-velocity/blob/main/image.png?raw=true)
 
-[Play](https://www.tsujio.org/games/game.html?title=cosmic-velocity)
+[Play](https://game.tsujio.org/game.html?title=cosmic-velocity)
 
 # Credits
 
