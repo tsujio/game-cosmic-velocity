@@ -37,7 +37,7 @@ const (
 	earthR         = 20
 )
 
-//go:embed resources/*.ttf resources/*.dat resources/bgm-*.wav
+//go:embed resources/*.ttf resources/*.dat resources/bgm-*.wav resources/secret
 var resources embed.FS
 
 func loadAudioData(name string, audioContext *audio.Context) []byte {
@@ -682,9 +682,15 @@ func (g *Game) initialize() {
 }
 
 func main() {
-	if os.Getenv("GAME_LOGGING") != "1" {
+	if os.Getenv("GAME_LOGGING") == "1" {
+		secret, err := resources.ReadFile("resources/secret")
+		if err == nil {
+			logging.Enable(string(secret))
+		}
+	} else {
 		logging.Disable()
 	}
+
 	if seed, err := strconv.Atoi(os.Getenv("GAME_RAND_SEED")); err == nil {
 		rand.Seed(int64(seed))
 	} else {
